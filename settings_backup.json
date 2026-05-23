@@ -90,7 +90,7 @@
         "prisma": true,
         "rose-pine-theme": true
     },
-    "relative_line_numbers": "enabled",
+    "relative_line_numbers": true,
     "scroll_beyond_last_line": "off",
     "vertical_scroll_margin": 8
 }

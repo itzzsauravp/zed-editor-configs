@@ -3,7 +3,10 @@
     {
         "context": "VimControl && vim_mode == normal",
         "bindings": {
-            "g d": "editor::GoToDefinition"
+            "g d": "editor::GoToDefinition",
+            "space d f": "editor::GoToDefinitionSplit",
+            "space d d": "diagnostics::Deploy",
+            "space d s": "outline::Toggle"
         }
     },
 
@@ -13,7 +16,7 @@
     {
         "context": "Editor && vim_mode == normal",
         "bindings": {
-            "ctrl-b":  "workspace::ToggleLeftDock",
+            "ctrl-b": "workspace::ToggleLeftDock",
             "space e": "workspace::ToggleLeftDock",
             "shift-h": "pane::ActivatePreviousItem",
             "shift-l": "pane::ActivateNextItem",
@@ -41,9 +44,9 @@
     {
         "context": "ProjectPanel",
         "bindings": {
-            "ctrl-b":  "workspace::ToggleLeftDock",
+            "ctrl-b": "workspace::ToggleLeftDock",
             "space e": "workspace::ToggleLeftDock",
-            "ctrl-l":  "editor::ToggleFocus"
+            "ctrl-l": "editor::ToggleFocus"
         }
     },
 
@@ -52,17 +55,17 @@
     {
         "context": "Terminal",
         "bindings": {
-            "ctrl-h":     "workspace::ActivatePaneLeft",
-            "ctrl-l":     "workspace::ActivatePaneRight",
-            "ctrl-j":     "workspace::ActivatePaneDown",
-            "ctrl-k":     "workspace::ActivatePaneUp",
-            "ctrl-b":     "workspace::ToggleLeftDock",
-            "ctrl-/":     "workspace::ToggleBottomDock",
+            "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-l": "workspace::ActivatePaneRight",
+            "ctrl-j": "workspace::ActivatePaneDown",
+            "ctrl-k": "workspace::ActivatePaneUp",
+            "ctrl-b": "workspace::ToggleLeftDock",
+            "ctrl-/": "workspace::ToggleBottomDock",
             "ctrl-enter": "workspace::NewTerminal",
-            "alt-\\":     "pane::SplitRight",
-            "alt-l":      "pane::SplitRight",
-            "alt--":      "pane::SplitDown",
-            "alt-j":      "pane::SplitDown"
+            "alt-\\": "pane::SplitRight",
+            "alt-l": "pane::SplitRight",
+            "alt--": "pane::SplitDown",
+            "alt-j": "pane::SplitDown"
         }
     },
 
