@@ -1,18 +1,19 @@
 [
-    // 1. VIM NORMAL MODE: GOTO DEFINITION
+    // 1. VIM NORMAL MODE: LSP BINDS + DIAGNOSTICS
     {
         "context": "VimControl && vim_mode == normal",
         "bindings": {
             "g d": "editor::GoToDefinition",
             "space d f": "editor::GoToDefinitionSplit",
+            "space d h": "editor::Hover",
             "space d d": "diagnostics::Deploy",
-            "space d s": "outline::Toggle"
+            "space d s": "outline::Toggle",
+            "] d": "editor::GoToDiagnostic",
+            "[ d": "editor::GoToPreviousDiagnostic"
         }
     },
 
-    // 2. VIM NORMAL MODE: TAB SWITCHING, SPLITS, FILE TREE TOGGLE
-    //    workspace::ToggleLeftDock opens/closes WITHOUT stealing focus
-    //    ctrl-b and space e are now identical in behaviour
+    // 2. VIM NORMAL MODE: TABS, SPLITS, FILE TREE TOGGLE
     {
         "context": "Editor && vim_mode == normal",
         "bindings": {
@@ -20,14 +21,13 @@
             "space e": "workspace::ToggleLeftDock",
             "shift-h": "pane::ActivatePreviousItem",
             "shift-l": "pane::ActivateNextItem",
-            "space |": "pane::SplitRight",
-            "space -": "pane::SplitDown"
+            "shift-|": "pane::SplitRight",
+            "shift--": "pane::SplitDown"
         }
     },
 
-    // 3. EDITOR PANE NAVIGATION (all vim modes including insert)
-    //    ctrl-hjkl moves between splits only, never opens anything
-    //    ctrl-/ toggles terminal without stealing focus from editor
+    // 3. EDITOR PANE NAVIGATION (all vim modes)
+    //    ctrl-hjkl moves between splits only, never opens panels
     {
         "context": "Editor",
         "bindings": {
@@ -39,19 +39,20 @@
         }
     },
 
-    // 4. FILE TREE — ctrl-l returns to editor (for when you DO
-    //    navigate there manually with ctrl-h), ctrl-b/space e close it
+    // 4. FILE TREE — NAVIGATION + FILE OPERATIONS
     {
-        "context": "ProjectPanel",
+        "context": "ProjectPanel && not_editing",
         "bindings": {
             "ctrl-b": "workspace::ToggleLeftDock",
             "space e": "workspace::ToggleLeftDock",
-            "ctrl-l": "editor::ToggleFocus"
+            "ctrl-l": "editor::ToggleFocus",
+            "a": "project_panel::NewFile",
+            "r": "project_panel::Rename",
+            "d": ["project_panel::Trash", { "skip_prompt": false }]
         }
     },
 
-    // 5. TERMINAL — pane navigation + splits
-    //    ctrl-b opens/closes file tree without stealing focus
+    // 5. TERMINAL — PANE NAVIGATION + SPLITS
     {
         "context": "Terminal",
         "bindings": {
@@ -69,7 +70,7 @@
         }
     },
 
-    // 6. GLOBAL FALLBACKS (empty workspace, no editor focused)
+    // 6. GLOBAL FALLBACKS
     {
         "context": "Workspace",
         "bindings": {
