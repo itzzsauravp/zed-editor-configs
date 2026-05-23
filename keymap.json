@@ -1,0 +1,85 @@
+[
+    // 1. VIM NORMAL MODE: GOTO DEFINITION
+    {
+        "context": "VimControl && vim_mode == normal",
+        "bindings": {
+            "g d": "editor::GoToDefinition"
+        }
+    },
+
+    // 2. VIM NORMAL MODE: TAB SWITCHING, SPLITS, FILE TREE TOGGLE
+    //    workspace::ToggleLeftDock opens/closes WITHOUT stealing focus
+    //    ctrl-b and space e are now identical in behaviour
+    {
+        "context": "Editor && vim_mode == normal",
+        "bindings": {
+            "ctrl-b":  "workspace::ToggleLeftDock",
+            "space e": "workspace::ToggleLeftDock",
+            "shift-h": "pane::ActivatePreviousItem",
+            "shift-l": "pane::ActivateNextItem",
+            "space |": "pane::SplitRight",
+            "space -": "pane::SplitDown"
+        }
+    },
+
+    // 3. EDITOR PANE NAVIGATION (all vim modes including insert)
+    //    ctrl-hjkl moves between splits only, never opens anything
+    //    ctrl-/ toggles terminal without stealing focus from editor
+    {
+        "context": "Editor",
+        "bindings": {
+            "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-l": "workspace::ActivatePaneRight",
+            "ctrl-j": "workspace::ActivatePaneDown",
+            "ctrl-k": "workspace::ActivatePaneUp",
+            "ctrl-/": "terminal_panel::ToggleFocus"
+        }
+    },
+
+    // 4. FILE TREE — ctrl-l returns to editor (for when you DO
+    //    navigate there manually with ctrl-h), ctrl-b/space e close it
+    {
+        "context": "ProjectPanel",
+        "bindings": {
+            "ctrl-b":  "workspace::ToggleLeftDock",
+            "space e": "workspace::ToggleLeftDock",
+            "ctrl-l":  "editor::ToggleFocus"
+        }
+    },
+
+    // 5. TERMINAL — pane navigation + splits
+    //    ctrl-b opens/closes file tree without stealing focus
+    {
+        "context": "Terminal",
+        "bindings": {
+            "ctrl-h":     "workspace::ActivatePaneLeft",
+            "ctrl-l":     "workspace::ActivatePaneRight",
+            "ctrl-j":     "workspace::ActivatePaneDown",
+            "ctrl-k":     "workspace::ActivatePaneUp",
+            "ctrl-b":     "workspace::ToggleLeftDock",
+            "ctrl-/":     "workspace::ToggleBottomDock",
+            "ctrl-enter": "workspace::NewTerminal",
+            "alt-\\":     "pane::SplitRight",
+            "alt-l":      "pane::SplitRight",
+            "alt--":      "pane::SplitDown",
+            "alt-j":      "pane::SplitDown"
+        }
+    },
+
+    // 6. GLOBAL FALLBACKS (empty workspace, no editor focused)
+    {
+        "context": "Workspace",
+        "bindings": {
+            "ctrl-/": "terminal_panel::ToggleFocus",
+            "ctrl-b": "workspace::ToggleLeftDock"
+        }
+    },
+
+    // 7. VIM INSERT → NORMAL
+    {
+        "context": "Editor && vim_mode == insert",
+        "bindings": {
+            "j k": "vim::NormalBefore"
+        }
+    }
+]
