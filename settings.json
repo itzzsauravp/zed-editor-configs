@@ -6,6 +6,8 @@
 // To see all of Zed's default settings without changing your
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
+//
+//  FOR ZOOM LEVEL GO TO THE LOWEST AND THEN ZOOM IN 6 TIMES EXACTLY USING (CTRL + '+')
 {
     "base_keymap": "VSCode",
     "disable_ai": true,
@@ -18,7 +20,7 @@
     "use_system_window_tabs": false,
     "tabs": {
         "file_icons": true,
-        "git_status": false
+        "git_status": true
     },
     "title_bar": {
         "show_menus": false,
@@ -43,7 +45,7 @@
     },
     "terminal": {
         "font_family": "FiraCode Nerd Font",
-        "font_size": 13.0
+        "font_size": 15.0
     },
     "autosave": {
         "after_delay": {
@@ -76,11 +78,11 @@
         "dark": "Zed (Default)"
     },
     "ui_font_size": 15.0,
-    "buffer_font_size": 13.0,
+    "buffer_font_size": 15.0,
     "theme": {
         "mode": "dark",
         "light": "Ayu Mirage",
-        "dark": "Rosé Pine"
+        "dark": "Cosmic Charcol"
     },
     "auto_install_extensions": {
         "dockerfile": true,
